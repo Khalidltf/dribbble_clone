@@ -23,9 +23,10 @@ document.addEventListener("turbolinks:load", function() {
 							return function(e) {
 								// Render thumbnail.
 								let span = document.createElement('span');
-                span.innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', encodeURIComponent(theFile.name), '"/>'].join('');
-                document.getElementById('list').insertBefore(span, null);
-
+								span.innerHTML = ['<img class="thumb" src="', e.target.result,
+									'" title="', escape(theFile.name), '"/>'
+								].join('');
+								document.getElementById('list').insertBefore(span, null);
 							};
 						})(f);
 
@@ -99,5 +100,6 @@ document.addEventListener("turbolinks:load", function() {
 	};
 	Shots.previewShot();
 	Shots.shotHover();
+
 
 });
